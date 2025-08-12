@@ -15,3 +15,16 @@ const res = isMatch("aa", "a*")
 console.log(res)
 
 //Using recursion
+const isMatch2 = (s, p) => {
+    if (!p) {
+        if (s) {
+            return false
+        }
+        return true;
+    }
+    const firstCharMatch = Boolean(s) && (s[0] === p[0] || p[0] === ".");
+    if (pattern[1] === "*") {
+        return isMatch(s.slice(1), p.slice(1))
+    }
+    return firstCharMatch ? isMatch(s.slice(1), p.slice(1)) : false;
+}
